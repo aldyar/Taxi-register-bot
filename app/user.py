@@ -275,6 +275,8 @@ async def process_selfie_with_car(message: Message, state: FSMContext):
 async def save_driver_state(message: Message, state: FSMContext):
     user_data = await state.get_data()
     await save_driver_data(user_data,message.from_user.id)
+    admin_id = 355643318
+    await message.bot.send_message(admin_id,f"Новый водитель ожидает проверки. ТГ ID пользователя: {message.from_user.id}")
     await message.answer("✅Данные успешно сохранены.",reply_markup=kb.user_profile)
     await state.clear()
 
